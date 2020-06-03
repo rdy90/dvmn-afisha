@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class MapsConfig(AppConfig):
-    name = 'modules.maps'
+    name = 'modules.places'

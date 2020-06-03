@@ -10,3 +10,17 @@ class Place(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class PlacePhoto(models.Model):
+    title = models.CharField(max_length=150)
+    place = models.ForeignKey(
+        to=Place,
+        related_name='places',
+        on_delete=models.CASCADE,
+    )
+    photo = models.ImageField(upload_to='places/', blank=True)
+    order = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.title

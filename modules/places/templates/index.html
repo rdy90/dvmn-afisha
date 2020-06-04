@@ -43,10 +43,13 @@
 </head>
 <body>
   <div id="sidebar">
+      {% verbatim %}
     <div id="sidebar-app" v-bind:class="{'sidebar-content': 1, 'bg-white': selectedPlace, 'bg-secondary': !selectedPlace}">
 
       <div v-if="promptVisible" class="d-flex flex-column justify-content-center align-items-center" style="height: 100%;">
+          {% endverbatim %}
         <img class="d-block select-place-prompt mb-4" src="{% static 'maps/hand-pointer-regular.svg' %}" alt="Select place">
+        {% verbatim %}
         <h4>Выберите место на карте</h4>
       </div>
 
@@ -92,6 +95,7 @@
         <div v-html="selectedPlace.long_description"></div>
       </div>
     </div>
+    {% endverbatim %}
   </div>
 
   <div id="map"></div>
@@ -173,7 +177,7 @@
 
       log.debug('Feature selected', feature);
       sidebar.show();
-      loadPlaceInfo(feature.properties.placeId, feature.properties.detailsUrl);
+      loadPlaceInfo(feature.properties.placeId, feature.properties.detailUrl);
     }).addTo(map);
 
     var sidebarApp = new Vue({

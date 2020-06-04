@@ -1,8 +1,8 @@
 import json
 
-from django.forms import model_to_dict
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 from django.views.generic import ListView, View
 
 from .models import Place
@@ -20,7 +20,8 @@ class IndexView(ListView):
                 'properties': {
                     'title': place.title,
                     'placeId': place.slug,
-                    'detailUrl': '#',
+                    'detailUrl': reverse('places:places', kwargs={
+                        'place_id': place.pk}),
                 },
             }
             for place in Place.objects.all()

@@ -10,6 +10,6 @@ class AdminPlace(admin.ModelAdmin):
 
 @admin.register(PlacePhoto)
 class AdminPlacePhoto(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title', 'order',)
     list_filter = ('place__title',)
     ordering = ('order',)

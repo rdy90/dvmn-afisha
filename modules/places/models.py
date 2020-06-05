@@ -14,7 +14,7 @@ class Place(models.Model):
 
 
 class PlacePhoto(models.Model):
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=150, blank=True)
     place = models.ForeignKey(
         to=Place,
         related_name='photos',
